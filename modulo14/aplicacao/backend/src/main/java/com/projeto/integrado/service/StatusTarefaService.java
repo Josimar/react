@@ -18,7 +18,11 @@ public class StatusTarefaService {
 	public StatusTarefa getById(Integer id) {
 		return statusTarefaRepository.findById(id).orElse(null) ;
 	}
-	
+		
+	public StatusTarefa getByStatus(StatusTarefa statusTarefa) {
+		return statusTarefaRepository.findByStatus(statusTarefa).orElse(null) ;
+	}
+
 	public StatusTarefa saveStatusTarefa(StatusTarefa statusTarefa) {
 		return statusTarefaRepository.save(statusTarefa);
 	}

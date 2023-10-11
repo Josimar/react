@@ -41,6 +41,24 @@ public class ProjetoController {
 			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);		
 	}
 	
+	@GetMapping("/{nome}")
+	public ResponseEntity<Projeto> getByProjetoNome(@PathVariable String nome) {
+		Projeto projeto = projetoService.getByNome(nome);
+		if(projeto != null)
+			return new ResponseEntity<>(projeto, HttpStatus.OK); 
+		else 
+			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);		
+	}
+	
+	@GetMapping("/{descricao}")
+	public ResponseEntity<Projeto> getByProjetoDescricao(@PathVariable String descricao) {
+		Projeto projeto = projetoService.getByDescricao(descricao);
+		if(projeto != null)
+			return new ResponseEntity<>(projeto, HttpStatus.OK); 
+		else 
+			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);		
+	}
+	
 	@PostMapping
 	public ResponseEntity<Projeto> saveProjeto(@RequestBody Projeto projeto) {
 		return new ResponseEntity<>(projetoService.saveProjeto(projeto), HttpStatus.CREATED);
